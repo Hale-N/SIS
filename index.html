@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#06080b" />
+  <meta name="description" content="Noel Hale dossier experience — high-end, detail-driven, immersive web page." />
+  <title>NOEL / Unofficial Dossier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="shader-canvas" aria-hidden="true"></canvas>
+  <div class="fallback-glow" aria-hidden="true"></div>
+  <div class="noise-layer" aria-hidden="true"></div>
+  <div class="scan-layer" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand-block">
+      <span class="brand-label" data-copy="brandLabel">ARCHIVE</span>
+      <span class="brand-name">NOEL / HALE</span>
+    </div>
+
+    <div class="topbar-actions">
+      <span class="micro-status">
+        <span class="status-dot"></span>
+        <span data-copy="statusActive">ACTIVE FILE</span>
+      </span>
+
+      <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a10 10 0 1 0 10 10A10.012 10.012 0 0 0 12 2Zm6.93 9h-3.11a15.92 15.92 0 0 0-1.17-5A8.03 8.03 0 0 1 18.93 11ZM12 4.06c.98 1.24 1.84 3.66 2.03 6.94H9.97C10.16 7.72 11.02 5.3 12 4.06ZM4.08 13h3.11a15.92 15.92 0 0 0 1.17 5A8.03 8.03 0 0 1 4.08 13ZM7.19 11H4.08a8.03 8.03 0 0 1 4.28-5 15.92 15.92 0 0 0-1.17 5Zm4.81 8.94c-.98-1.24-1.84-3.66-2.03-6.94h4.06c-.19 3.28-1.05 5.7-2.03 6.94ZM13.97 11c-.19-3.28-1.05-5.7-2.03-6.94 2.34.65 4.2 3.22 4.87 6.94Zm-3.94 2c.19 3.28 1.05 5.7 2.03 6.94-2.34-.65-4.2-3.22-4.87-6.94Zm4.62 5a15.92 15.92 0 0 0 1.17-5h3.11a8.03 8.03 0 0 1-4.28 5Z"></path>
+        </svg>
+        <span id="langIndicator">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="top">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow" data-copy="heroEyebrow">UNOFFICIAL DOSSIER / FIELD VIEW</p>
+        <h1>
+          <span class="hero-name">NOEL</span>
+          <span class="hero-title" data-copy="heroTitle">정식 기록에는 남지 않는, 그러나 현장에는 분명히 존재하는 인물.</span>
+        </h1>
+        <p class="hero-lead" data-copy="heroLead">
+          차갑게 정리된 문장, 느린 시선, 오래 남는 정적. 이 페이지는 노엘 헤일을 소개하는 동시에, 단순한 프로필보다 조금 더 깊은 체류감을 만들기 위한 비공식 파일이다.
+        </p>
+
+        <div class="hero-badges">
+          <span class="hero-badge"><strong data-copy="badgeNationalityValue">영국</strong><small data-copy="badgeNationalityLabel">국적</small></span>
+          <span class="hero-badge"><strong>34</strong><small data-copy="badgeAgeLabel">나이</small></span>
+          <span class="hero-badge"><strong>189 cm</strong><small data-copy="badgeHeightLabel">키</small></span>
+          <span class="hero-badge"><strong>SW7</strong><small data-copy="badgeResidenceLabel">거주</small></span>
+          <span class="hero-badge"><strong>MI6</strong><small data-copy="badgeAffiliationLabel">소속</small></span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="primary-button" href="#dossier" data-copy="openDossier">파일 열기</a>
+          <a class="ghost-button" href="#background-gate" data-copy="openLockedArchive">성장배경 잠금 보기</a>
+        </div>
+      </div>
+
+      <aside class="hero-card tilt-panel" data-reveal>
+        <div class="card-rail">
+          <span class="card-stamp" data-copy="fieldStamp">FIELD DOSSIER</span>
+          <span class="card-rail-meta">LON // SW7</span>
+        </div>
+
+        <div class="hero-card-main">
+          <p class="alias-label" data-copy="aliasLabel">CALLSIGN</p>
+          <div class="alias-name">NOEL</div>
+          <p class="full-name">Noel Hale</p>
+          <p class="role-line" data-copy="roleLine">Senior HUMINT Case Officer · NOC Operations</p>
+        </div>
+
+        <dl class="identity-grid compact-grid">
+          <div>
+            <dt data-copy="idDobLabel">DOB</dt>
+            <dd>1992.12.22</dd>
+          </div>
+          <div>
+            <dt data-copy="idAgeLabel">AGE</dt>
+            <dd>34</dd>
+          </div>
+          <div>
+            <dt data-copy="idHeightLabel">HEIGHT</dt>
+            <dd>189 cm</dd>
+          </div>
+          <div>
+            <dt data-copy="idEyesLabel">EYES</dt>
+            <dd data-copy="idEyesValue">녹갈색 헤이즐</dd>
+          </div>
+          <div>
+            <dt data-copy="idBaseLabel">BASE</dt>
+            <dd data-copy="idBaseValue">런던 SW7 뮤스하우스</dd>
+          </div>
+          <div>
+            <dt data-copy="idStatusLabel">STATUS</dt>
+            <dd data-copy="idStatusValue">활동 중</dd>
+          </div>
+        </dl>
+
+        <p class="card-footnote" data-copy="heroFootnote">
+          공식적으로는 빈 공간처럼 보이지만, 필요할 때마다 가장 먼저 움직이는 파일.
+        </p>
+      </aside>
+    </section>
+
+    <section class="dossier-grid section-shell" id="dossier">
+      <article class="info-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">IDENTITY</span>
+          <span class="section-index">01</span>
+        </div>
+        <h2 data-copy="identityTitle">실제 요원 프로필</h2>
+        <p class="section-copy" data-copy="identityCopy">
+          표면의 정보만으로도 인물의 결이 읽히도록 설계했다. 군더더기 없이 정리하되, 살아 있는 사람처럼 보이는 디테일은 남겨두었다.
+        </p>
+        <dl class="identity-grid">
+          <div>
+            <dt data-copy="identityNameLabel">이름</dt>
+            <dd>Noel Hale</dd>
+          </div>
+          <div>
+            <dt data-copy="identityNationalityLabel">국적</dt>
+            <dd data-copy="identityNationalityValue">영국</dd>
+          </div>
+          <div>
+            <dt data-copy="identityAgeLabel">나이</dt>
+            <dd>34</dd>
+          </div>
+          <div>
+            <dt data-copy="identityHeightLabel">키</dt>
+            <dd>189 cm</dd>
+          </div>
+          <div>
+            <dt data-copy="identityRoleLabel">직무</dt>
+            <dd data-copy="identityRoleValue">MI6 Senior HUMINT Case Officer · NOC</dd>
+          </div>
+          <div>
+            <dt data-copy="identityLegendLabel">전문</dt>
+            <dd data-copy="identityLegendValue">행동·심리 프로파일링 / 외부 자문</dd>
+          </div>
+          <div>
+            <dt data-copy="identityResidenceLabel">거주</dt>
+            <dd data-copy="identityResidenceValue">런던 SW7 뮤스하우스 2층</dd>
+          </div>
+          <div>
+            <dt data-copy="identityBirthLabel">출생</dt>
+            <dd data-copy="identityBirthValue">1992년 12월 22일</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="info-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">PRESENCE</span>
+          <span class="section-index">02</span>
+        </div>
+        <h2 data-copy="presenceTitle">보이는 것보다 늦게 남는 인상</h2>
+        <ul class="detail-list">
+          <li data-copy="presenceItem1">정중하고 여유롭지만 표정은 쉽게 읽히지 않는다.</li>
+          <li data-copy="presenceItem2">상대를 편안하게 만들 수 있지만, 그 이상은 임의로 주지 않는다.</li>
+          <li data-copy="presenceItem3">유머는 거의 장식이 아니라 긴장 조절용 도구에 가깝다.</li>
+          <li data-copy="presenceItem4">관심이 생기면 말보다 관찰 시간이 먼저 길어진다.</li>
+        </ul>
+      </article>
+
+      <article class="info-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">PHYSICAL</span>
+          <span class="section-index">03</span>
+        </div>
+        <h2 data-copy="physicalTitle">피지컬 시그니처</h2>
+        <ul class="detail-list">
+          <li data-copy="physicalItem1">흰 피부, 검은 머리, 녹갈색 헤이즐 눈.</li>
+          <li data-copy="physicalItem2">넓은 어깨와 곧은 뼈대, 로잉으로 단단해진 등과 코어.</li>
+          <li data-copy="physicalItem3">손등의 푸른 핏줄, 손바닥 안쪽의 굳은살, 차가운 손.</li>
+          <li data-copy="physicalItem4">뚜렷한 눈썹과 코로 이어지는 라인, 혈색이 짙은 입술.</li>
+        </ul>
+      </article>
+
+      <article class="info-card wide-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">RHYTHM</span>
+          <span class="section-index">04</span>
+        </div>
+        <h2 data-copy="rhythmTitle">일상의 리듬과 습관</h2>
+        <div class="split-notes">
+          <div>
+            <h3 data-copy="rhythmSub1">유지 방식</h3>
+            <p data-copy="rhythmCopy1">로잉은 취미이자 정리 방식이다. 카페인은 선호하지만 단 음료나 탄산은 두지 않는다. 술과 담배는 효율과 이성을 흐린다고 판단한다.</p>
+          </div>
+          <div>
+            <h3 data-copy="rhythmSub2">몸이 먼저 드러내는 것</h3>
+            <p data-copy="rhythmCopy2">관찰 중에는 시선이 손으로 먼저 간다. 불편하면 커프스를 정리하고, 분노할수록 오히려 움직임은 느려진다. 안정이 필요할 때는 체온을 찾는 쪽으로 미세하게 기운다.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="info-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">LOGIC</span>
+          <span class="section-index">05</span>
+        </div>
+        <h2 data-copy="logicTitle">행동 논리</h2>
+        <ul class="detail-list">
+          <li data-copy="logicItem1">리스크가 보이면 자신이 안는 쪽으로 동선을 옮긴다.</li>
+          <li data-copy="logicItem2">설명보다 먼저 공간을 정리하고 자리와 흐름을 바꾼다.</li>
+          <li data-copy="logicItem3">비겁함과 책임 회피를 경멸한다.</li>
+          <li data-copy="logicItem4">정중함은 후퇴가 아니라 통제 방식에 가깝다.</li>
+        </ul>
+      </article>
+
+      <article class="info-card" data-reveal>
+        <div class="card-headline-row">
+          <span class="section-token">TEXTURE</span>
+          <span class="section-index">06</span>
+        </div>
+        <h2 data-copy="textureTitle">인물을 사람답게 만드는 잔디테일</h2>
+        <ul class="detail-list">
+          <li data-copy="textureItem1">태어날 때부터 살던 런던 SW7의 뮤스하우스 2층에 여전히 거주한다.</li>
+          <li data-copy="textureItem2">누군가의 안부나 귀가를 기다리는 습관에 약하게 멈춘다.</li>
+          <li data-copy="textureItem3">자기 감정보다 타인의 감정을 먼저 읽는 버릇이 오래 남아 있다.</li>
+          <li data-copy="textureItem4">관심이 생기면 챙김과 통제가 같은 손에서 동시에 나온다.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="gate-section section-shell" id="background-gate">
+      <div class="gate-header" data-reveal>
+        <p class="eyebrow" data-copy="gateEyebrow">BACKGROUND / LOCKED</p>
+        <h2 id="gateTitle" data-copy="gateTitleLocked">성장배경은 첫 접근에서 바로 열리지 않는다.</h2>
+        <p id="gateLead" class="section-copy" data-copy="gateLeadLocked">
+          이 파일의 과거는 표면 아래에 남아 있다. 씰을 길게 눌러 파일을 활성화한 뒤, 기억의 연대를 올바른 순서로 맞추면 배경이 해제된다.
+        </p>
+      </div>
+
+      <div class="gate-layout">
+        <article class="gate-card seal-card" data-reveal>
+          <button class="seal-button" id="sealButton" type="button" aria-describedby="gateStatus gateHint">
+            <span class="seal-ring"></span>
+            <span class="seal-core">
+              <span class="seal-label">MI6</span>
+              <strong data-copy="sealCore">HOLD</strong>
+            </span>
+          </button>
+          <p class="gate-status" id="gateStatus" data-copy="gateStatusIdle">길게 눌러 파일을 활성화하세요.</p>
+          <p class="gate-hint" id="gateHint" data-copy="gateHint">힌트: 기억은 시간순으로 열린다.</p>
+        </article>
+
+        <article class="gate-card sequence-card" data-reveal>
+          <div class="sequence-grid" aria-label="Hidden background sequence">
+            <button class="sequence-node" data-seq="1992" type="button">
+              <strong>1992</strong>
+              <span data-copy="seq1992">ORIGIN</span>
+            </button>
+            <button class="sequence-node" data-seq="2010" type="button">
+              <strong>2010</strong>
+              <span data-copy="seq2010">FRACTURE</span>
+            </button>
+            <button class="sequence-node" data-seq="2016" type="button">
+              <strong>2016</strong>
+              <span data-copy="seq2016">RECRUIT</span>
+            </button>
+          </div>
+          <div class="sequence-progress" aria-hidden="true">
+            <span id="sequenceProgressBar"></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="background-shell locked" id="backgroundShell">
+        <div class="background-redaction" aria-hidden="true"></div>
+        <div class="background-heading">
+          <span class="section-token">DECLASSIFIED MEMORY</span>
+          <span id="unlockPill" class="unlock-pill" data-copy="unlockPending">LOCKED</span>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">1992</span>
+            <div>
+              <h3 data-copy="timelineTitle1">완벽한 집, 부족한 온기</h3>
+              <p data-copy="timelineCopy1">오케스트라 지휘자인 아버지와 런던 옥션 하우스 큐레이터인 어머니 아래에서 자랐다. 음악과 미술품은 넘쳤지만, 정서적 온기는 없었다. 그는 사랑받기 위해 먼저 표정과 톤을 읽는 아이가 되었다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2010</span>
+            <div>
+              <h3 data-copy="timelineTitle2">비가 오던 밤의 첫 균열</h3>
+              <p data-copy="timelineCopy2">대입을 앞두고 부모의 귀가가 늦어지던 밤, 전화 한 통으로 빗길 연쇄사고와 사망 소식을 듣는다. 그는 울지 못했고, 그 사실을 두고 스스로를 감정을 느끼지 못하는 인간이라고 결론내렸다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2010 — 2016</span>
+            <div>
+              <h3 data-copy="timelineTitle3">케임브리지와 인간 해석의 언어</h3>
+              <p data-copy="timelineCopy3">케임브리지 PBS에 진학해 심리와 행동을 학문이 아니라 삶의 설명서처럼 다뤘다. 학부 수석 졸업 후, 비언어적 커뮤니케이션과 행동 기제를 분석하는 박사과정으로 이동했다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2016</span>
+            <div>
+              <h3 data-copy="timelineTitle4">결점이 재능으로 번역되던 순간</h3>
+              <p data-copy="timelineCopy4">MI6 리크루터는 오래전부터 그를 관찰해 왔다. 졸업 이틀 전 전달된 스카우트는, 감정에 휘둘리지 않는 해석 능력을 결함이 아닌 현장 적성으로 다시 명명했다.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">NOW</span>
+            <div>
+              <h3 data-copy="timelineTitle5">현재의 노엘</h3>
+              <p data-copy="timelineCopy5">현재 그는 MI6의 Senior HUMINT Case Officer이자 NOC 전문 요원이다. 자신의 무감정을 공백이 아니라 우월한 정밀도로 이해하며, 그 믿음 위에 오늘의 자신을 세워두고 있다.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="date-strip" data-reveal>
+          <span data-copy="dateStrip1">1992.12.22 / 출생</span>
+          <span data-copy="dateStrip2">2010.01 / 부모 사망</span>
+          <span data-copy="dateStrip3">2010.10 / Cambridge PBS</span>
+          <span data-copy="dateStrip4">2013.06 / 학부 수석</span>
+          <span data-copy="dateStrip5">2016.07 / 졸업 전 MI6 스카우트</span>
+          <span data-copy="dateStrip6">2026.03 / 10년차 Senior HUMINT</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="field-notes section-shell" id="notes">
+      <div class="section-header" data-reveal>
+        <p class="eyebrow" data-copy="notesEyebrow">FIELD NOTES</p>
+        <h2 data-copy="notesTitle">관찰, 통제, 결핍이 한 사람 안에서 정렬되는 방식</h2>
+        <p class="section-copy" data-copy="notesLead">소개 페이지이지만, 단순한 스펙 카드로 끝나지 않도록 행동과 심리의 결을 따로 남겼다.</p>
+      </div>
+
+      <div class="notes-grid">
+        <article class="note-card" data-reveal>
+          <h3 data-copy="notesCardTitle1">무엇을 먼저 보는가</h3>
+          <p data-copy="notesCardCopy1">사람의 손, 그다음 시선, 그다음 목소리의 톤과 속도. 공간에서는 출구와 조명을 먼저 읽는다.</p>
+        </article>
+        <article class="note-card" data-reveal>
+          <h3 data-copy="notesCardTitle2">압박이 걸릴 때</h3>
+          <p data-copy="notesCardCopy2">문장은 짧아지기보다 더 정확해진다. 질문은 확인형이 되고, 움직임은 조용히 느려진다.</p>
+        </article>
+        <article class="note-card" data-reveal>
+          <h3 data-copy="notesCardTitle3">위로의 방식</h3>
+          <p data-copy="notesCardCopy3">말보다 먼저 앉히고, 치우고, 바꾸고, 그 뒤에 짧게 말한다. 위로조차 공간 배치로 시작하는 타입이다.</p>
+        </article>
+        <article class="note-card" data-reveal>
+          <h3 data-copy="notesCardTitle4">가까워질수록</h3>
+          <p data-copy="notesCardCopy4">설명은 줄고 행동이 늘어난다. 챙김과 통제가 같은 문장 안에 동시에 나타난다.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p data-copy="footerLine">Static build / GitHub Pages ready / No external build step required.</p>
+  </footer>
+
+  <noscript>
+    <div class="noscript-note">This page uses JavaScript for the language switch, shader background, and hidden background gate.</div>
+  </noscript>
+
+  <script src="app.js"></script>
+</body>
+</html>
