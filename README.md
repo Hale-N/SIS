@@ -1,3 +1,12 @@
+***
+
+
+##  TIMELINE
+MARCH 27 | 테스트 업로드
+
+
+***
+
 # NOEL / Unofficial Dossier
 
 A static, GitHub Pages–ready character page for **Noel Hale**.
@@ -52,7 +61,9 @@ A static, GitHub Pages–ready character page for **Noel Hale**.
 - To reset the hidden background locally, clear this key in the browser:
   - `localStorage.removeItem('noel-dossier-unlocked')`
 
+
 ***
+
 
 # NOEL / 비공식 기록물 (Unofficial Dossier)
 
